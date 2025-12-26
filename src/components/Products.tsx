@@ -1,11 +1,11 @@
 import ProductCard from './ProductCard';
 
-// ✅ Proper image imports (NO require)
-import BearCandle from './assets/bearcandle.jpg';
-import FlowerCandle from './assets/flowercandle.jpg';
-import ConeGlowCandle from './assets/coneglowcandle.jpg';
-import HeartDomeStackCandle from './assets/heartdomestackcandle.jpg';
-import BubbleShapeCandle from './assets/bubbleshapecandle.jpg';
+// ✅ Correct path for src/assests
+import BearCandle from '../assests/bearcandle.jpg';
+import FlowerCandle from '../assests/flowercandle.jpg';
+import ConeGlowCandle from '../assests/coneglowcandle.jpg';
+import HeartDomeStackCandle from '../assests/heartdomestackcandle.jpg';
+import BubbleShapeCandle from '../assests/bubbleshapecandle.jpg';
 
 const products = [
   {

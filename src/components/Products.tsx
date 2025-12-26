@@ -1,11 +1,11 @@
 import ProductCard from './ProductCard';
 
-// Import images from src/assets
-import BearCandle from './assets/bearcandle.jpg';
-import FlowerCandle from './assets/flowercandle.jpg';
-import ConeGlowCandle from './assets/coneglowcandle.jpg';
-import HeartDomeStackCandle from './assets/heartdomestackcandle.jpg';
-import BubbleShapeCandle from './assets/bubbleshapecandle.jpg';
+// Use require() to load images (works in TypeScript)
+const BearCandle = require('./assets/bearcandle.jpg');
+const FlowerCandle = require('./assets/flowercandle.jpg');
+const ConeGlowCandle = require('./assets/coneglowcandle.jpg');
+const HeartDomeStackCandle = require('./assets/heartdomestackcandle.jpg');
+const BubbleShapeCandle = require('./assets/bubbleshapecandle.jpg');
 
 const products = [
   {

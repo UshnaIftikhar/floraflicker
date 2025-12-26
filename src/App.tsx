@@ -2,7 +2,6 @@ import Hero from './components/Hero';
 import Products from './components/Products';
 import WhyFloraFlicker from './components/WhyFloraFlicker';
 import GiftSection from './components/GiftSection';
-import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
       <Products />
       <WhyFloraFlicker />
       <GiftSection />
-      <Gallery />
       <Footer />
     </div>
   );

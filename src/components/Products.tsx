@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import ProductCard from './ProductCard';
 
-// Import images from assets
+// Import images from src/assets
 import BearCandle from './assets/bearcandle.jpg';
 import FlowerCandle from './assets/flowercandle.jpg';
 import ConeGlowCandle from './assets/coneglowcandle.jpg';

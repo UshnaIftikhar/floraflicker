@@ -1,57 +1,59 @@
+
 import ProductCard from './ProductCard';
 
-// ✅ Correct imports from src/assets
-import BearCandle from '../assets/bearcandle.jpg';
-import FlowerCandle from '../assets/flowercandle.jpg';
-import ConeGlowCandle from '../assets/coneglowcandle.jpg';
-import HeartDomeStackCandle from '../assets/heartdomestackcandle.jpg';
-import BubbleShapeCandle from '../assets/bubbleshapecandle.jpg';
+// Use require() to load images (works in TypeScript)
+const BearCandle = require('./assets/bearcandle.jpg');
+const FlowerCandle = require('./assets/flowercandle.jpg');
+const ConeGlowCandle = require('./assets/coneglowcandle.jpg');
+const HeartDomeStackCandle = require('./assets/heartdomestackcandle.jpg');
+const BubbleShapeCandle = require('./assets/bubbleshapecandle.jpg');
 
-// ✅ Define a Product type
-type Product = {
-  id: number;
-  priceWithGift: number;
-  priceWithoutGift: number;
-  image: string;
-  description: string;
-};
-
-const products: Product[] = [
+const products = [
   {
     id: 1,
+    name: 'Flower Candle',
+    emoji: '🌹',
     priceWithGift: 699,
     priceWithoutGift: 399,
     image: FlowerCandle,
-    description: 'Delicate rose-scented bloom',
+    description: 'Delicate rose-scented bloom'
   },
   {
     id: 2,
+    name: 'Bear Candle',
+    emoji: '🧸',
     priceWithGift: 599,
     priceWithoutGift: 399,
     image: BearCandle,
-    description: 'Adorable vanilla embrace',
+    description: 'Adorable vanilla embrace'
   },
   {
     id: 3,
+    name: 'Cone Glow Candle',
+    emoji: '🔺',
     priceWithGift: 450,
     priceWithoutGift: 250,
     image: ConeGlowCandle,
-    description: 'Modern geometric elegance',
+    description: 'Modern geometric elegance'
   },
   {
     id: 4,
+    name: 'Heart Dome Stack Candle',
+    emoji: '❤️',
     priceWithGift: 599,
     priceWithoutGift: 350,
     image: HeartDomeStackCandle,
-    description: 'Layered love & warmth',
+    description: 'Layered love & warmth'
   },
   {
     id: 5,
+    name: 'Bubble Shape Candle',
+    emoji: '🫧',
     priceWithGift: 450,
     priceWithoutGift: 250,
     image: BubbleShapeCandle,
-    description: 'Playful spherical charm',
-  },
+    description: 'Playful spherical charm'
+  }
 ];
 
 export default function Products() {
@@ -66,9 +68,14 @@ export default function Products() {
             Each candle tells a story, hand-poured with love and intention
           </p>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {products.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              index={index}
+            />
           ))}
         </div>
       </div>

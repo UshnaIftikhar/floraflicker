@@ -3,6 +3,7 @@ import Products from './components/Products';
 import WhyFloraFlicker from './components/WhyFloraFlicker';
 import GiftSection from './components/GiftSection';
 import Footer from './components/Footer';
+import Cart from './components/Cart'; // ✅ Import Cart
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <WhyFloraFlicker />
       <GiftSection />
       <Footer />
+      <Cart /> {/* ✅ Display Cart */}
     </div>
   );
 }

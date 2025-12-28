@@ -1,6 +1,11 @@
-
-import { useState } from 'react';
 import ProductCard from './ProductCard';
+
+// ✅ Image imports from src/assets
+import flowercandle from '../assets/flowercandle.jpeg';
+import bearcandle from '../assets/bearcandle.jpeg';
+import coneglowcandle from '../assets/coneglowcandle.jpeg';
+import heartdomestack from '../assets/heartdomestack.jpeg';
+import bubbleshapecandle from '../assets/bubbleshapecandle.jpeg';
 
 const products = [
   {
@@ -9,7 +14,7 @@ const products = [
     emoji: '🌹',
     priceWithGift: 699,
     priceWithoutGift: 399,
-    image: 'https://images.pexels.com/photos/5722880/pexels-photo-5722880.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: flowercandle,
     description: 'Delicate rose-scented bloom'
   },
   {
@@ -18,7 +23,7 @@ const products = [
     emoji: '🧸',
     priceWithGift: 599,
     priceWithoutGift: 399,
-    image: 'https://images.pexels.com/photos/7937489/pexels-photo-7937489.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: bearcandle,
     description: 'Adorable vanilla embrace'
   },
   {
@@ -27,7 +32,7 @@ const products = [
     emoji: '🔺',
     priceWithGift: 450,
     priceWithoutGift: 250,
-    image: 'https://images.pexels.com/photos/6552313/pexels-photo-6552313.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: coneglowcandle,
     description: 'Modern geometric elegance'
   },
   {
@@ -36,7 +41,7 @@ const products = [
     emoji: '❤️',
     priceWithGift: 599,
     priceWithoutGift: 350,
-    image: 'https://images.pexels.com/photos/5722877/pexels-photo-5722877.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: heartdomestack,
     description: 'Layered love & warmth'
   },
   {
@@ -45,7 +50,7 @@ const products = [
     emoji: '🫧',
     priceWithGift: 450,
     priceWithoutGift: 250,
-    image: 'https://images.pexels.com/photos/8985163/pexels-photo-8985163.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: bubbleshapecandle,
     description: 'Playful spherical charm'
   }
 ];

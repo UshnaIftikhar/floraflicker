@@ -19,7 +19,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, index }: ProductCardProps) {
   const [withGift, setWithGift] = useState(true);
-  const { addToCart } = useCart(); // ✅ Added cart functionality
+  const { addToCart } = useCart();
 
   return (
     <div
@@ -96,14 +96,14 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           </button>
         </div>
 
-        {/* ✅ ACTIVE Add to Cart Button */}
         <button
           onClick={() =>
             addToCart({
               id: product.id,
               name: product.name,
               price: withGift ? product.priceWithGift : product.priceWithoutGift,
-              image: product.image
+              image: product.image,
+              quantity: 1
             })
           }
           className="w-full py-3 bg-amber-900 text-amber-50 rounded-full font-light tracking-wide hover:bg-amber-800 transition-colors duration-300 hover:shadow-lg"

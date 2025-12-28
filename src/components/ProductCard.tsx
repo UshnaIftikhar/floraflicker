@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Gift, Package } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 interface Product {
   id: number;
@@ -18,6 +19,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, index }: ProductCardProps) {
   const [withGift, setWithGift] = useState(true);
+  const { addToCart } = useCart(); // ✅ Added cart functionality
 
   return (
     <div
@@ -94,7 +96,18 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           </button>
         </div>
 
-        <button className="w-full py-3 bg-amber-900 text-amber-50 rounded-full font-light tracking-wide hover:bg-amber-800 transition-colors duration-300 hover:shadow-lg">
+        {/* ✅ ACTIVE Add to Cart Button */}
+        <button
+          onClick={() =>
+            addToCart({
+              id: product.id,
+              name: product.name,
+              price: withGift ? product.priceWithGift : product.priceWithoutGift,
+              image: product.image
+            })
+          }
+          className="w-full py-3 bg-amber-900 text-amber-50 rounded-full font-light tracking-wide hover:bg-amber-800 transition-colors duration-300 hover:shadow-lg"
+        >
           Add to Cart
         </button>
       </div>

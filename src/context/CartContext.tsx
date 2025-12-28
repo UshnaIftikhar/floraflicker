@@ -5,6 +5,7 @@ export interface CartItem {
   name: string;
   price: number;
   image: string;
+  quantity: number; // ✅ added quantity
 }
 
 interface CartContextType {
@@ -19,7 +20,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
-    setCart(prev => [...prev, item]);
+    setCart(prev => {
+      const existing = prev.find(i => i.id === item.id);
+      if (existing) {
+        // increase quantity if item already exists
+        return prev.map(i =>
+          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      } else {
+        return [...prev, { ...item, quantity: 1 }];
+      }
+    });
   };
 
   const removeFromCart = (id: number) => {

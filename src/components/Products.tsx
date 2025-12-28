@@ -1,12 +1,6 @@
 
+import { useState } from 'react';
 import ProductCard from './ProductCard';
-
-// Use require() to load images (works in TypeScript)
-const BearCandle = require('./assets/bearcandle.jpg');
-const FlowerCandle = require('./assets/flowercandle.jpg');
-const ConeGlowCandle = require('./assets/coneglowcandle.jpg');
-const HeartDomeStackCandle = require('./assets/heartdomestackcandle.jpg');
-const BubbleShapeCandle = require('./assets/bubbleshapecandle.jpg');
 
 const products = [
   {
@@ -15,7 +9,7 @@ const products = [
     emoji: '🌹',
     priceWithGift: 699,
     priceWithoutGift: 399,
-    image: FlowerCandle,
+    image: 'https://images.pexels.com/photos/5722880/pexels-photo-5722880.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Delicate rose-scented bloom'
   },
   {
@@ -24,16 +18,16 @@ const products = [
     emoji: '🧸',
     priceWithGift: 599,
     priceWithoutGift: 399,
-    image: BearCandle,
+    image: 'https://images.pexels.com/photos/7937489/pexels-photo-7937489.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Adorable vanilla embrace'
   },
   {
     id: 3,
-    name: 'Cone Glow Candle',
+    name: 'Cone Candle',
     emoji: '🔺',
     priceWithGift: 450,
     priceWithoutGift: 250,
-    image: ConeGlowCandle,
+    image: 'https://images.pexels.com/photos/6552313/pexels-photo-6552313.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Modern geometric elegance'
   },
   {
@@ -42,7 +36,7 @@ const products = [
     emoji: '❤️',
     priceWithGift: 599,
     priceWithoutGift: 350,
-    image: HeartDomeStackCandle,
+    image: 'https://images.pexels.com/photos/5722877/pexels-photo-5722877.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Layered love & warmth'
   },
   {
@@ -51,7 +45,7 @@ const products = [
     emoji: '🫧',
     priceWithGift: 450,
     priceWithoutGift: 250,
-    image: BubbleShapeCandle,
+    image: 'https://images.pexels.com/photos/8985163/pexels-photo-8985163.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Playful spherical charm'
   }
 ];

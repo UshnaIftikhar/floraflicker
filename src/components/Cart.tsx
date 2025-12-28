@@ -4,7 +4,6 @@ import { X } from 'lucide-react';
 export default function Cart() {
   const { cart, removeFromCart } = useCart();
 
-  // Hide cart if empty
   if (cart.length === 0) return null;
 
   return (
@@ -25,7 +24,9 @@ export default function Cart() {
               />
               <div>
                 <p className="text-sm font-medium text-amber-950">{item.name}</p>
-                <p className="text-xs text-amber-700">₹{item.price}</p>
+                <p className="text-xs text-amber-700">
+                  ₹{item.price} x {item.quantity} = ₹{item.price * item.quantity}
+                </p>
               </div>
             </div>
 
@@ -37,6 +38,11 @@ export default function Cart() {
             </button>
           </div>
         ))}
+      </div>
+
+      {/* Total Price */}
+      <div className="mt-4 p-3 bg-amber-100 rounded-xl text-right font-medium text-amber-950">
+        Total: ₹{cart.reduce((sum, item) => sum + item.price * item.quantity, 0)}
       </div>
     </div>
   );

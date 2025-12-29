@@ -13,13 +13,16 @@ export default function CartDrawer() {
     totalPrice,
   } = useCart();
 
+  const shippingFee = 199;
+  const grandTotal = totalPrice + shippingFee;
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/40" onClick={closeCart}>
       <div
         className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col"
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside drawer
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
@@ -89,13 +92,18 @@ export default function CartDrawer() {
         {/* Footer */}
         <div className="border-t p-4 space-y-3">
           <div className="flex justify-between font-semibold text-lg">
-            <span>Total Items:</span>
-            <span>{totalItems}</span>
+            <span>Items Total:</span>
+            <span>₨{totalPrice}</span>
           </div>
 
           <div className="flex justify-between font-semibold text-lg">
-            <span>Total Price:</span>
-            <span>₨ {totalPrice}</span>
+            <span>Delivery Charges:</span>
+            <span>₨{shippingFee}</span>
+          </div>
+
+          <div className="flex justify-between font-semibold text-xl">
+            <span>Grand Total:</span>
+            <span>₨{grandTotal}</span>
           </div>
 
           <button className="w-full bg-brown-900 text-white py-3 rounded-lg hover:bg-brown-800 transition">

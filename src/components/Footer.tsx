@@ -1,51 +1,60 @@
-import { Instagram, MessageCircle, Sparkles } from 'lucide-react';
+import { Instagram, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="relative py-16 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-transparent via-amber-100/50 to-rose-100/50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <Sparkles className="w-6 h-6 text-amber-700 animate-pulse" />
-            <h3 className="text-3xl md:text-4xl font-serif text-amber-950">Flora Flicker</h3>
-            <Sparkles className="w-6 h-6 text-amber-700 animate-pulse" />
-          </div>
+    <footer className="bg-amber-950 text-amber-50 py-10 mt-20">
+      <div className="max-w-6xl mx-auto px-6 text-center space-y-6">
+        {/* Brand */}
+        <h3 className="text-2xl font-serif">Flora Flicker</h3>
+        <p className="text-sm text-amber-200">
+          Handcrafted Scented Candles 🌸
+        </p>
 
-          <p className="text-xl md:text-2xl text-amber-800 font-serif italic mb-8">
-            "Let nature glow with every flame."
-          </p>
+        {/* Social Icons */}
+        <div className="flex justify-center gap-6 mt-6">
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/923088602387"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-green-400 transition-colors"
+          >
+            <MessageCircle size={26} />
+          </a>
 
-          <p className="text-amber-800 font-light max-w-2xl mx-auto leading-relaxed mb-8">
-            Hand-poured with intention. Crafted with care. Designed to bring warmth,
-            peace, and beauty into every space. Because every moment deserves to glow.
-          </p>
+          {/* Instagram */}
+          <a
+            href="https://www.instagram.com/flora_flicker56?igsh=MWdvNml3MGtnN20xcg=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-400 transition-colors"
+          >
+            <Instagram size={26} />
+          </a>
 
-          <div className="flex justify-center space-x-6 mb-12">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500"
+          {/* TikTok (Custom SVG) */}
+          <a
+            href="https://www.tiktok.com/@scentcandles56?_r=1&_t=ZS-92VDTKn6JZY"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="currentColor"
             >
-              <Instagram className="w-6 h-6 text-amber-900 group-hover:text-white transition-colors duration-300" />
-            </a>
-
-            <a
-              href="https://wa.me/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-green-500"
-            >
-              <MessageCircle className="w-6 h-6 text-amber-900 group-hover:text-white transition-colors duration-300" />
-            </a>
-          </div>
+              <path d="M12.004 2h3.063c.097.91.34 1.814.719 2.651.381.837.89 1.588 1.5 2.219.61.63 1.323 1.132 2.101 1.48.778.347 1.614.533 2.464.547v3.086c-1.248-.04-2.484-.287-3.654-.732-1.171-.445-2.261-1.08-3.215-1.875v7.916c0 1.03-.202 2.051-.595 3-.394.95-.97 1.813-1.697 2.54-.728.728-1.59 1.304-2.54 1.697-.95.394-1.971.595-3 .595-2.08 0-4.075-.826-5.546-2.297C.826 19.306 0 17.31 0 15.23c0-2.08.826-4.076 2.297-5.547 1.471-1.47 3.466-2.297 5.546-2.297.379 0 .754.03 1.123.088v3.197c-.37-.126-.758-.19-1.148-.19-1.02 0-2 .405-2.721 1.127-.721.721-1.126 1.7-1.126 2.72 0 1.021.405 2 .126 2.721.721.721 1.7 1.126 2.721 1.126 1.02 0 2-.405 2.721-1.126.721-.721 1.126-1.7 1.126-2.721V2z" />
+            </svg>
+          </a>
         </div>
 
-        <div className="border-t border-amber-300/30 pt-8 text-center">
-          <p className="text-sm text-amber-700 font-light">
-            © 2024 Flora Flicker. Handcrafted with love. All rights reserved.
-          </p>
-        </div>
+        {/* Copyright */}
+        <p className="text-xs text-amber-300 mt-6">
+          © 2025 Flora Flicker. All rights reserved by Aksely.
+        </p>
       </div>
     </footer>
   );

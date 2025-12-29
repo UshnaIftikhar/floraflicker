@@ -15,12 +15,17 @@ export default function CartDrawer() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/40">
-      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col">
+    <div className="fixed inset-0 z-50 bg-black/40" onClick={closeCart}>
+      <div
+        className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col"
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside drawer
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-xl font-semibold">Cart ({totalItems} items)</h2>
-          <button onClick={closeCart}>
+          <h2 className="text-xl font-semibold">
+            Cart ({totalItems} {totalItems === 1 ? "item" : "items"})
+          </h2>
+          <button onClick={closeCart} aria-label="Close Cart">
             <X />
           </button>
         </div>
@@ -44,12 +49,13 @@ export default function CartDrawer() {
 
               <div className="flex-1">
                 <h3 className="font-medium">{item.name}</h3>
-                <p className="text-sm text-gray-600">Rs {item.price}</p>
+                <p className="text-sm text-gray-600">₨ {item.price}</p>
 
                 <div className="flex items-center gap-2 mt-2">
                   <button
                     onClick={() => decreaseQuantity(item.id)}
                     className="p-1 border rounded"
+                    aria-label={`Decrease quantity of ${item.name}`}
                   >
                     <Minus size={16} />
                   </button>
@@ -59,13 +65,14 @@ export default function CartDrawer() {
                   <button
                     onClick={() => increaseQuantity(item.id)}
                     className="p-1 border rounded"
+                    aria-label={`Increase quantity of ${item.name}`}
                   >
                     <Plus size={16} />
                   </button>
                 </div>
               </div>
 
-              <p className="font-semibold">Rs {item.price * item.quantity}</p>
+              <p className="font-semibold">₨ {item.price * item.quantity}</p>
             </div>
           ))}
         </div>
@@ -74,7 +81,7 @@ export default function CartDrawer() {
         <div className="border-t p-4 space-y-3">
           <div className="flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>Rs {totalPrice}</span>
+            <span>₨ {totalPrice}</span>
           </div>
 
           <button className="w-full bg-black text-white py-3 rounded-lg">

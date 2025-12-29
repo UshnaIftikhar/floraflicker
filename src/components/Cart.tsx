@@ -3,8 +3,12 @@ import { X } from 'lucide-react';
 
 export default function Cart() {
   const { cart, removeFromCart } = useCart();
+  const shippingFee = 199;
 
   if (cart.length === 0) return null;
+
+  const itemsTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const grandTotal = itemsTotal + shippingFee;
 
   return (
     <div className="fixed bottom-6 right-6 w-80 bg-white rounded-3xl shadow-2xl p-5 z-50">
@@ -25,7 +29,7 @@ export default function Cart() {
               <div>
                 <p className="text-sm font-medium text-amber-950">{item.name}</p>
                 <p className="text-xs text-amber-700">
-                  ₹{item.price} x {item.quantity} = Rs{item.price * item.quantity}
+                 ₨{item.price} x {item.quantity} = ₨{item.price * item.quantity}
                 </p>
               </div>
             </div>
@@ -33,6 +37,7 @@ export default function Cart() {
             <button
               onClick={() => removeFromCart(item.id)}
               className="text-amber-900 hover:text-red-600"
+              aria-label={`Remove ${item.name} from cart`}
             >
               <X size={16} />
             </button>
@@ -40,9 +45,17 @@ export default function Cart() {
         ))}
       </div>
 
-      {/* Total Price */}
-      <div className="mt-4 p-3 bg-amber-100 rounded-xl text-right font-medium text-amber-950">
-        Total: ₹{cart.reduce((sum, item) => sum + item.price * item.quantity, 0)}
+      {/* Total and Shipping */}
+      <div className="mt-4 p-3 bg-amber-100 rounded-xl text-right font-medium text-amber-950 space-y-2">
+        <div>
+          Items Total: ₨{itemsTotal}
+        </div>
+        <div>
+          Delivery Charges: ₨{shippingFee}
+        </div>
+        <div className="text-lg font-semibold">
+          Grand Total: ₨{grandTotal}
+        </div>
       </div>
     </div>
   );

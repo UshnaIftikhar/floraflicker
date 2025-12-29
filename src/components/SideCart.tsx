@@ -11,6 +11,10 @@ export default function SideCart() {
     closeCart
   } = useCart();
 
+  const shippingFee = 199;
+  const itemsTotal = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  const grandTotal = itemsTotal + (cart.length > 0 ? shippingFee : 0);
+
   return (
     <>
       {/* Overlay */}
@@ -58,7 +62,7 @@ export default function SideCart() {
                 <div>
                   <p className="text-sm font-medium text-amber-950">{item.name}</p>
                   <p className="text-xs text-amber-700">
-                    ₹{item.price} x {item.quantity} = ₹{item.price * item.quantity}
+                    ₨{item.price} x {item.quantity} = ₨{item.price * item.quantity}
                   </p>
                   <div className="flex items-center space-x-2 mt-1">
                     <button
@@ -93,7 +97,15 @@ export default function SideCart() {
             Total Items: {cart.reduce((sum, i) => sum + i.quantity, 0)}
           </p>
           <p className="font-medium text-amber-950">
-            Total Price: ₹{cart.reduce((sum, i) => sum + i.price * i.quantity, 0)}
+            Items Total: ₨{itemsTotal}
+          </p>
+          {cart.length > 0 && (
+            <p className="font-medium text-amber-950">
+              Delivery Charges: ₨{shippingFee}
+            </p>
+          )}
+          <p className="font-semibold text-lg text-amber-900">
+            Grand Total: ₨{grandTotal}
           </p>
           <button className="w-full py-3 bg-amber-900 text-amber-50 rounded-full font-light hover:bg-amber-800 transition-colors shadow-md hover:shadow-lg">
             Checkout

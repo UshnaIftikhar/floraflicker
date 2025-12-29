@@ -64,7 +64,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
                 </div>
               </div>
               <p className={`text-lg font-serif ${withGift ? 'text-amber-950' : 'text-amber-800'}`}>
-                ₹{product.priceWithGift}
+                ₨{product.priceWithGift}
               </p>
             </div>
           </button>
@@ -90,7 +90,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
                 </div>
               </div>
               <p className={`text-lg font-serif ${!withGift ? 'text-amber-950' : 'text-amber-800'}`}>
-                ₹{product.priceWithoutGift}
+                ₨{product.priceWithoutGift}
               </p>
             </div>
           </button>
@@ -103,7 +103,6 @@ export default function ProductCard({ product, index }: ProductCardProps) {
               name: product.name,
               price: withGift ? product.priceWithGift : product.priceWithoutGift,
               image: product.image,
-              quantity: 1
             })
           }
           className="w-full py-3 bg-amber-900 text-amber-50 rounded-full font-light tracking-wide hover:bg-amber-800 transition-colors duration-300 hover:shadow-lg"

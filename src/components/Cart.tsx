@@ -25,7 +25,7 @@ export default function Cart() {
               <div>
                 <p className="text-sm font-medium text-amber-950">{item.name}</p>
                 <p className="text-xs text-amber-700">
-                  ₹{item.price} x {item.quantity} = ₹{item.price * item.quantity}
+                  ₹{item.price} x {item.quantity} = Rs{item.price * item.quantity}
                 </p>
               </div>
             </div>

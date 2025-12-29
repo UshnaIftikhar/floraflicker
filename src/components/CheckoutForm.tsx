@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useState } from 'react';
 
 interface Props {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface Props {
 
 export default function CheckoutForm({ isOpen, onClose }: Props) {
   const { cart } = useCart();
+  const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
@@ -17,6 +19,50 @@ export default function CheckoutForm({ isOpen, onClose }: Props) {
     0
   );
   const grandTotal = itemsTotal + shippingFee;
+
+  // Inline Thank You Message
+  if (submitted) {
+    return (
+      <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
+        <div className="bg-white w-full max-w-lg rounded-3xl p-6 relative text-center">
+          <h2 className="text-2xl font-serif text-amber-950 mb-4">
+            Thanks for Shopping!
+          </h2>
+          <p className="mb-4">We have received your order and will contact you shortly.</p>
+          <button
+            onClick={onClose}
+            className="px-6 py-2 bg-amber-900 text-white rounded-full"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        setSubmitted(true); // show inline thank-you message
+        form.reset();
+      } else {
+        alert('Oops! Something went wrong.');
+      }
+    } catch (error) {
+      alert('Oops! Something went wrong.');
+      console.error(error);
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
@@ -33,6 +79,7 @@ export default function CheckoutForm({ isOpen, onClose }: Props) {
           action="https://formspree.io/f/mkonkkog"
           method="POST"
           className="space-y-4"
+          onSubmit={handleSubmit}
         >
           <input
             name="name"
@@ -69,8 +116,7 @@ export default function CheckoutForm({ isOpen, onClose }: Props) {
             name="order_items"
             value={cart
               .map(
-                i =>
-                  `${i.name} x ${i.quantity} = Rs ${i.price * i.quantity}`
+                i => `${i.name} x ${i.quantity} = Rs ${i.price * i.quantity}`
               )
               .join(' | ')}
           />
@@ -82,9 +128,7 @@ export default function CheckoutForm({ isOpen, onClose }: Props) {
           <div className="bg-amber-50 p-4 rounded-xl text-sm">
             <p>Items Total: ₨{itemsTotal}</p>
             <p>Delivery Charges: ₨{shippingFee}</p>
-            <p className="font-semibold">
-              Grand Total: ₨{grandTotal}
-            </p>
+            <p className="font-semibold">Grand Total: ₨{grandTotal}</p>
           </div>
 
           <button

@@ -8,6 +8,7 @@ export default function CartDrawer() {
     closeCart,
     increaseQuantity,
     decreaseQuantity,
+    removeFromCart,
     totalItems,
     totalPrice,
   } = useCart();
@@ -23,7 +24,7 @@ export default function CartDrawer() {
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-xl font-semibold">
-            Cart ({totalItems} {totalItems === 1 ? "item" : "items"})
+            Your Cart ({totalItems} {totalItems === 1 ? "item" : "items"})
           </h2>
           <button onClick={closeCart} aria-label="Close Cart">
             <X />
@@ -39,7 +40,7 @@ export default function CartDrawer() {
           {cart.map((item) => (
             <div
               key={item.id}
-              className="flex items-center gap-4 border rounded-lg p-3"
+              className="flex items-center gap-4 border rounded-lg p-3 bg-yellow-50"
             >
               <img
                 src={item.image}
@@ -49,7 +50,9 @@ export default function CartDrawer() {
 
               <div className="flex-1">
                 <h3 className="font-medium">{item.name}</h3>
-                <p className="text-sm text-gray-600">₨ {item.price}</p>
+                <p className="text-sm text-gray-600">
+                  ₨{item.price} x {item.quantity} = ₨{item.price * item.quantity}
+                </p>
 
                 <div className="flex items-center gap-2 mt-2">
                   <button
@@ -72,7 +75,13 @@ export default function CartDrawer() {
                 </div>
               </div>
 
-              <p className="font-semibold">₨ {item.price * item.quantity}</p>
+              <button
+                onClick={() => removeFromCart(item.id)}
+                aria-label={`Remove ${item.name} from cart`}
+                className="text-red-500 hover:text-red-700"
+              >
+                <X />
+              </button>
             </div>
           ))}
         </div>
@@ -80,11 +89,16 @@ export default function CartDrawer() {
         {/* Footer */}
         <div className="border-t p-4 space-y-3">
           <div className="flex justify-between font-semibold text-lg">
-            <span>Total</span>
+            <span>Total Items:</span>
+            <span>{totalItems}</span>
+          </div>
+
+          <div className="flex justify-between font-semibold text-lg">
+            <span>Total Price:</span>
             <span>₨ {totalPrice}</span>
           </div>
 
-          <button className="w-full bg-black text-white py-3 rounded-lg">
+          <button className="w-full bg-brown-900 text-white py-3 rounded-lg hover:bg-brown-800 transition">
             Checkout
           </button>
         </div>

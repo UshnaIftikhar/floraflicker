@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 export interface CartItem {
   id: number;
@@ -24,8 +24,33 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
+  // Load cart from localStorage if exists
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    }
+    return [];
+  });
+
+  // Load cart drawer open state from localStorage if exists
+  const [isOpen, setIsOpen] = useState(() => {
+    if (typeof window !== "undefined") {
+      const savedIsOpen = localStorage.getItem("cartIsOpen");
+      return savedIsOpen === "true";
+    }
+    return false;
+  });
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  // Save isOpen to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("cartIsOpen", isOpen.toString());
+  }, [isOpen]);
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
